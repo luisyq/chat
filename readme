@@ -1,0 +1,11 @@
+Chat hecho con Node.js
+======================
+
+Este chat esta hecho con node.js corre perfectamente, es una version muy basica 
+
+Instalacion
+===========
+1. Instalar node.js para su version de pc, windows, mac, linux
+2. Instalar socket.io desde consola
+3. Copiar el archivo servidor.js en la carpeta donde instalaron node.js
+4. Cambiar la direccion de ip de index.html por la ip de tu pc y listo
