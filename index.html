@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>yoquie.ro</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://192.168.1.3:6969/socket.io/socket.io.js" ></script>
+	<script type="text/javascript">
+	$(document).on("ready", iniciar);
+	var websocket = io.connect("http://192.168.1.3:6969");
+	function iniciar(){
+		websocket.on("nombreDesdeServidor", recibirMensaje);
+		$("#formulario").on("submit", enviarMensaje);
+	}
+	function enviarMensaje(e){
+		e.preventDefault();
+		websocket.emit("nuevoNombre", $("#usuario").val());
+		$("#usuario").reset();
+	}
+	function recibirMensaje(datosServidor){
+		codigo="<article>"+datosServidor+"<div>"+hora()+"</div>"+"</article>";
+		$("#historia").prepend($(codigo).fadeIn("slow"));
+	}
+	function hora(){
+		marcacion = new Date() 
+		Hora = marcacion.getHours() 
+		Minutos = marcacion.getMinutes() 
+		Segundos = marcacion.getSeconds() 
+		if (Hora<=9)
+		Hora = "0" + Hora
+		if (Minutos<=9)
+		Minutos = "0" + Minutos
+		if (Segundos<=9)
+		Segundos = "0" + Segundos
+		var Dia = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
+		var Mes = new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+		var Hoy = new Date();
+		var Anio = Hoy.getFullYear();
+		var Fecha = "Hoy es " + Dia[Hoy.getDay()] + ", " + Hoy.getDate() + " de " + Mes[Hoy.getMonth()] + " de " + Anio + "a las "+ marcacion.getHours()+":"+marcacion.getMinutes()+":"+marcacion.getSeconds();
+		return Fecha;
+	}
+	</script>
+</head>
+<link rel="stylesheet" type="text/css" href="estilo.css">
+<body>
+<section>
+	<label>Chat yoquie.ro</label>
+	<form id="formulario">
+		<!-- <input type="text" placeholder="Tu nombre" id="usuario" required autocomplete="off"/> -->
+		<input type="text" placeholder="Comentar..." id="usuario" required autocomplete="off"/>
+		<!-- <input type="password" placeholder="Password" id="password">
+		<input type="submit" value="Enviar"> -->
+	</form>
+</section>
+<section id="historia">
+</section>
+</body>
+<html>

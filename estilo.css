@@ -1,0 +1,45 @@
+body{
+	background-color: #C0C0C0;
+	font-size: 1em;
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	text-align: center;
+}
+form input{
+	display: block;
+	font-size: 2em;
+	width: 95%;
+	padding: 10px;
+	border: 1px solid #727564;
+	margin: 1em auto;
+	border-radius: 10px;
+
+}
+form{
+	background-color: #CCC;
+	width:45%;
+	padding: 1em;
+	margin: 1em auto;
+	border-radius: 10px;
+}
+form #comentario{
+	height: 100px;
+}
+label{
+	margin-top: 10%;
+	font-size: 3em;
+}
+article{
+	text-align: left;
+	background-color:#CAD2F9;
+	color: #000;
+	font-size: 2em;
+	margin: 0.5em auto;
+	width: 700px;
+	padding: 20px;
+	display: block;
+	word-wrap:break-word;
+}
+article div{
+	font-size: 0.5em;
+	color: #57594D;
+}
