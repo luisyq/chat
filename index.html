@@ -11,11 +11,12 @@
 	function iniciar(){
 		websocket.on("nombreDesdeServidor", recibirMensaje);
 		$("#formulario").on("submit", enviarMensaje);
+
 	}
 	function enviarMensaje(e){
 		e.preventDefault();
 		websocket.emit("nuevoNombre", $("#usuario").val());
-		$("#usuario").reset();
+		$('#usuario').attr('value', '');
 	}
 	function recibirMensaje(datosServidor){
 		codigo="<article>"+datosServidor+"<div>"+hora()+"</div>"+"</article>";
@@ -36,7 +37,7 @@
 		var Mes = new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 		var Hoy = new Date();
 		var Anio = Hoy.getFullYear();
-		var Fecha = "Hoy es " + Dia[Hoy.getDay()] + ", " + Hoy.getDate() + " de " + Mes[Hoy.getMonth()] + " de " + Anio + "a las "+ marcacion.getHours()+":"+marcacion.getMinutes()+":"+marcacion.getSeconds();
+		var Fecha = "Publicado el " + Dia[Hoy.getDay()] + ", " + Hoy.getDate() + " de " + Mes[Hoy.getMonth()] + " de " + Anio + "a las "+ marcacion.getHours()+":"+marcacion.getMinutes()+":"+marcacion.getSeconds();
 		return Fecha;
 	}
 	</script>
@@ -47,7 +48,7 @@
 	<label>Chat yoquie.ro</label>
 	<form id="formulario">
 		<!-- <input type="text" placeholder="Tu nombre" id="usuario" required autocomplete="off"/> -->
-		<input type="text" placeholder="Comentar..." id="usuario" required autocomplete="off"/>
+		<input type="text" placeholder="Comentar..." id="usuario" autocomplete="off" required/>
 		<!-- <input type="password" placeholder="Password" id="password">
 		<input type="submit" value="Enviar"> -->
 	</form>
